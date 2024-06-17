@@ -1,8 +1,14 @@
-## Main device 프로젝트 구조
+## Project description
+- This is the main Raspberry Pi code for smart gardening.
+- This Raspberry Pi can select the type and number of plants.
+- It uses a raspberry pi, lcd and button actuator.
+- Receive and process socket communication from multiple client Raspberry Pi synchronously.
+  
+## Project struct
 
-- service dir로 비지니스 로직과 인프라로직을 분리하였습니다.
-- 도메인 로직과 비지니스 로직을 굳이 구분하진 않았습니다.
-- config.txt에는 button gpio 핀번호와 pr이 있습니다.
+- We used service dir to separate business logic from infrastructure logic.
+- We didn't necessarily separate domain logic from business logic.
+- In config.txt, we have the button gpio pin number and pr.
 
 ```bash
 main_device/
@@ -36,38 +42,35 @@ main_device/
 └── main.c
 ```
 
-## 요구 사항
+## Requirements
 
-빌드하고 실행하려면 다음과 같은 라이브러리가 필요합니다
-
+To build and run, you will need the following libraries
 - `gcc` (GNU Compiler Collection)
 - `make`
-- `pthread` (POSIX 스레드)
-- `i2c` 라이브러리
-- `cjson` 라이브러리
+- `pthread` (POSIX thread)
+- `i2c` 
+- `cjson` 
 
-### 설치(linux)
+### install (linux)
 
-다음 명령어를 사용하여 필요한 라이브러리를 설치할 수 있습니다
+You can install the required libraries using the following command
 
    ```bash
    sudo apt update
    sudo apt install build-essential make libi2c-dev libcjson-dev
    ```
 
-### 명령어
-
-1. **실행**
+1. **execute**
 
    ```sh
-   sudo ./[프로젝트 dir]
+   sudo ./[project dir]
    
-2. **컴파일**
+2. **compile**
 
    ```sh
    make
 
-3. **컴파일된 오브젝트 파일과 실행 파일을 제거**
+3. **remove the compiled object files and executables**
 
    ```sh
    make clean
